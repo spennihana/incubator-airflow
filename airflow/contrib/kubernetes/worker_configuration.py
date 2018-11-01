@@ -85,6 +85,26 @@ class WorkerConfiguration(LoggingMixin):
             "AIRFLOW__CORE__EXECUTOR": "LocalExecutor",
         }
 
+        self.log.debug("airflow_configmap is not None {}".format(self.kube_config.airflow_configmap is not None))
+        self.log.debug("*********************START OF CONFIGMAP PRINT****************")
+        self.log.debug("************************************************************")
+        self.log.debug("************************************************************")
+        self.log.debug(self.kube_config.airflow_configmap)
+        self.log.debug("************************************************************")
+        self.log.debug("************************************************************")
+        self.log.debug("**********************END OF CONFIGMAP PRINT**********************")
+        self.log.debug("")
+
+        self.log.debug("*********************START OF KUBECFG PRINT****************")
+        self.log.debug("************************************************************")
+        self.log.debug("************************************************************")
+        self.log.debug(self.kube_config)
+        self.log.debug("************************************************************")
+        self.log.debug("************************************************************")
+        self.log.debug("**********************END OF KUBECFG PRINT**********************")
+        self.log.debug("")
+
+
         if self.kube_config.airflow_configmap:
             env['AIRFLOW__CORE__AIRFLOW_HOME'] = self.worker_airflow_home
         if self.kube_config.worker_dags_folder:
