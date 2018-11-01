@@ -189,7 +189,10 @@ class WorkerConfiguration(LoggingMixin):
             volume_mounts.append(logs_volume_mount)
 
         # Mount the airflow.cfg file via a configmap the user has specified
+        self.log.debug("MOUNT airflow.cfg via CONFIGMAP")
+        self.log.debug("CONFIGMAP NONE?: {}".format(self.kube_config.airflow_configmap))
         if self.kube_config.airflow_configmap:
+            self.log.debug("ADDING THE AIRFLOW CONFIGMAP")
             config_volume_name = 'airflow-config'
             config_path = '{}/airflow.cfg'.format(self.worker_airflow_home)
             volumes.append({
